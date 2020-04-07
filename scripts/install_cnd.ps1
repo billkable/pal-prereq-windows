@@ -18,7 +18,6 @@ choco install cloudfoundry-cli --confirm
 choco install postman --confirm
 choco install curl --confirm
 choco install flyway.commandline --confirm
-choco install rabbitmq --confirm
 choco install ntop.portable --confirm
 choco install intellijidea-community --confirm
 choco install vscode --confirm
