@@ -26,7 +26,8 @@ The following are the set of dependencies required for the
 1. cURL
 1. Flyway
 1. Rabbitmq
-1. IntelliJ
+1. IntelliJ (Development IDE)
+1. Visual Studio Code (for basic text editing)
 1. Firefox
 1. Graphviz
 
@@ -86,22 +87,41 @@ Remember that Windows architecture is substantially different than *nix
 based systems,
 and bash was not designed with Windows in mind.
 
-Some of the hotspots to consider:
+It is generally recommended to use Powershell over Gitbash,
+given some of the hotspots you will encounter in the course:
 
 1.  Gitbash *does not* behave exactly like a *nix hosted bash shell.
 1.  Gitbash *does not work well with std-in interactive applications*.
-1.  IDE shortcuts between Windows and MacOSX are different,
-    although close to Ubuntu counterparts.
+1.  In most cases Powershell is a better choice over Gitbash given
+    its native support.
 1.  Command line monitoring and process handling tools are different,
     or behave differently on Windows than *nix.
 
-In some cases it may be more convenient to use Powershell counterparts
-over Gitbash.
-If you know them,
-feel free to use them over any of the prescriptive bash commands in this
-course.
-
 The following sections are specific known issues:
+
+### Assignment Submission lab
+
+The commands are prescriptive bash,
+some work exclusively in Gitbash,
+some in Powershell:
+
+-   Steps 1 and 2 work in Powershell.
+-   Step 3 works in Gitbash.
+    You can do input redirect in Powershell:
+
+    ```pwsh
+    Get-Content ./databases/tracker/create_databases.sql | mysql -uroot
+    ```
+
+-   Step 4 works with `vi` in Gitbash,
+    but students can leverage editor of their choice.
+    Visual Studio Code and IntelliJ are provided.
+
+### Migration lab
+
+- Execute step 1->3 from Gitbash
+- Flyway 6.x does not support iteractive, add the `-user=tracker` option.
+- Execute step 4 from Powershell
 
 ### Logging into Cloud Foundry CLI
 
