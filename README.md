@@ -46,10 +46,12 @@ The following are additional software components convenient for the
 To install and use the image,
 from the windows machine:
 
-1. Download the `install.ps1` script from this repository.
-1. Run it from a Powershell terminal with Adminstrative access.
-1. Close the Powershell window.
-1. Use the image
+1.  Download the `install.ps1` script from this repository.
+1.  Make sure your Windows machine has the policy to run scripts
+    (see the comments at top of the install script)
+1.  Run it from a Powershell terminal with Adminstrative access.
+1.  Close the Powershell window.
+1.  Use the image
 
 ## Idiosynchrocies with Windows
 
@@ -66,7 +68,7 @@ and bash was not designed with Windows in mind.
 Some of the hotspots to consider:
 
 1.  Gitbash *does not* behave exactly like a *nix hosted bash shell.
-1.  cURL syntax on Windows is different than on *nix hosted platforms.
+1.  Gitbash *does not work well with std-in interactive applications*.
 1.  IDE shortcuts between Windows and MacOSX are different,
     although close to Ubuntu counterparts.
 1.  Command line monitoring and process handling tools are different,
@@ -82,7 +84,8 @@ The following sections are specific known issues:
 
 ### Logging into Cloud Foundry CLI
 
-Gitbash will fail on the `cf login` command.
+Gitbash will fail on the `cf login` interactive command.
+
 There are two workarounds:
 
 1.  Use terminal or powershell - the `cf` command line will be the same
@@ -101,6 +104,15 @@ There are two workarounds:
 
     Use `cf help` command for their use.
 
+### MySQL command line client
+
+Given the issues with Gitbash and interactive commands,
+use the Powershell to execute `mysql` interactive shell commands.
+
+The following is an example:
+
+`mysql -uroot`
+
 ### cURL
 
 Note the the experience may be different between Powershell
@@ -114,11 +126,20 @@ Note the the experience may be different between Powershell
 Recommend to stick with Gitbash if using `curl`,
 or you may choose to run Postman instead.
 
-### Terminating a process
+### Finding and Terminating processes
 
-There is known issue with Gitbash where its terminal will not recognize
-a `Ctl+C` signal to gracefully terminate a running foreground process
-(like a long-running Spring Boot application).
+In the PAL for Java Developers course you will need to start,
+stop,
+and monitor Spring Boot applications and perhaps other foreground
+console processes.
+
+Windows and *nix based systems differ in the tools,
+so it is important to know what are available on your platform.
+
+There is also a known issue with Gitbash where its terminal will not
+recognize a `Ctl+C` signal to gracefully terminate a running foreground
+process (like a long-running Spring Boot application).
+
 You have a few options to handle it:
 
 1.  Run your processes from powershell.
@@ -127,27 +148,76 @@ You have a few options to handle it:
     and will automatically transpose forward to back slashes.
     Use of `Ctrl+C` should work here.
 
-1.  Use `jps -l` command from alternate Gitbash or powershell window
-    to determine the process id (PID) of the appropriate app you want to
-    terminate,
-    and terminate with one of the following:
+1.  Run your processes from Gitbash,
+    but you wil have to use tools to find and terminate your
+    processes from an alternate window.
 
-    -   Task Manager
-        -   Right-click Taskbar and select the option
-        -   Go to the *Details* view to list the processes
-        -   Right-click the process,
-            select *End task* option.
+### Finding processes on you machine
 
-    -   [Stop-Process command](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/stop-process?view=powershell-7) is the preferred approach,
-        and more aligned with the existing instructions:
+On *nix based platforms you would normally use tools like `ps` or `top`
+to monitor your processes.
 
-        ```pshl
-        Stop-Process -Id <pid> -Confirm -PassThru
+If you want to find Java processes running on your machine,
+you can run the `jps` command if a modern Java runtime is installed.
+
+On Windows,
+you can run the `jps` command from either Powershell or Gitbash,
+just like on *nix systems:
+
+`jps -l`
+
+This list details of your Java processes including the process id (PID)
+as well as the full qualified Main class runner.
+
+You can also use the following on Windows Systems to find arbitrary
+processes:
+
+1.  [Get-Process command](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-process?view=powershell-7)
+    -   Similar to `ps` command,
+        you can list processes:
+
+        ```pwsh
+        Get-Process
         ```
 
-        If you need to force-kill a hung process,
-        use the `-Force` option:
+    -   Or, you can filter by name or expression
 
-        ```pshl
-        Stop-Process -Id <pid> -Confirm -Force -PassThru
+        ```pwsh
+        Get-Process mysql*
         ```
+
+    -   See the
+        [reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-process?view=powershell-7)
+        for more advanced usage of filtering and formatting.
+
+1.  [Htop port for Windows](https://github.com/Nuke928/NTop)
+    - Based off of Htop (commonly used in *nix systems)
+    - Command line monitoring
+    - Vi key bindings for sorting and filtering
+
+1.  Task Manager
+    - Right-click Taskbar and select the option
+    - Go to the *Details* view to list the processes
+
+### Terminating processes on Windows
+
+-   [Stop-Process command](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/stop-process?view=powershell-7)
+    is the preferred approach,
+    and more aligned with the existing instructions:
+
+    ```pshl
+    Stop-Process -Id <pid>
+    ```
+
+    If you need to force-kill a hung process,
+    use the `-Force` option:
+
+    ```pshl
+    Stop-Process -Id <pid> -Force
+    ```
+
+1.  Task Manager
+    -   Right-click Taskbar and select the option
+    -   Go to the *Details* view to list the processes
+    -   Right-click the process,
+        select *End task* option.

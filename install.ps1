@@ -1,3 +1,8 @@
+# Make sure you have access to run scripts on the Local Machine,
+# run the following if necessary:
+#
+#   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+
 # Install Chocolatey
 
 Set-ExecutionPolicy Bypass -Scope Process
@@ -20,4 +25,6 @@ choco install firefox --confirm
 choco install graphviz.portable --confirm
 
 # Add trace plugin for Rabbitmq
-'C:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.3\sbin\rabbitmq-plugins' enable rabbitmq_tracing
+cd 'C:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.3\sbin'
+.\rabbitmq-plugins enable rabbitmq_tracing
+cd $HOME
