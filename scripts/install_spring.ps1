@@ -21,5 +21,4 @@ choco install ntop.portable --confirm
 choco install intellijidea-community --confirm
 choco install vscode --confirm
 choco install springtoolsuite --confirm
-choco install firefox --confirm
 

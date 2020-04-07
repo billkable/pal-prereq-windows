@@ -25,7 +25,6 @@ choco install ntop.portable --confirm
 choco install intellijidea-community --confirm
 choco install vscode --confirm
 choco install springtoolsuite --confirm
-choco install firefox --confirm
 
 # Add trace plugin for Rabbitmq
 cd 'C:\Program Files\RabbitMQ Server\rabbitmq_server-3.8.3\sbin'

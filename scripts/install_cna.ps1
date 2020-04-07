@@ -26,7 +26,6 @@ choco install nginx --confirm
 choco install ntop.portable --confirm
 choco install intellijidea-community --confirm
 choco install vscode --confirm
-choco install firefox --confirm
 choco install slack --confirm
 choco install graphviz.portable --confirm
 
