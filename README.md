@@ -61,6 +61,8 @@ with the appropriate script from the [scripts](./scripts) directory.
 
 ## Optional setup and UI tuning
 
+1.  Consider setting Firefox browser as the default.
+
 1.  Consider setting the background for the PAL Desktop,
     which you can get
     [here](https://prerequisites.pal.pivotal.io/prerequisites/prerequisites/linux-install/pal-desktop.png).
