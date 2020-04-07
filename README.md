@@ -8,7 +8,7 @@ and
 [Ubuntu Linux](https://prerequisites.pal.pivotal.io/prerequisites/prerequisites/linux-install/ubuntu.html).
 
 The
-[Windows install script](./install.ps1) leverages
+[Windows install scripts](./scripts) leverage
 the
 [Chocolatey] package manager to keep the installation
 experience similar to the Ubuntu and Mac equivalents.
@@ -34,11 +34,10 @@ You can see the full list of PAL prerequisites
 [here](https://prerequisites.pal.pivotal.io/prerequisites/prerequisites/index.html).
 
 The following are additional software components convenient for the
-*Spring* product courses and specific for Windows:
+specific or convenient for Windows users:
 
 1. Chocolatey package manager
 1. Postman - REST Client
-1. Jmeter - Load injector
 1. NTop - Enhanced console top command for Windows
 
 ## Running the installer
@@ -46,12 +45,31 @@ The following are additional software components convenient for the
 To install and use the image,
 from the windows machine:
 
-1.  Download the `install.ps1` script from this repository.
+1.  Download the `install-pal.ps1` script from this repository.
 1.  Make sure your Windows machine has the policy to run scripts
-    (see the comments at top of the install script)
+    (see the comments at top of the install script).
+1.  Optionally tune the script if needed for a particular cohort.
 1.  Run it from a Powershell terminal with Adminstrative access.
 1.  Close the Powershell window.
-1.  Use the image
+1.  Use the image.
+
+## Spring Product Course installers
+
+Repeat steps in [Running the installer](#running-the-installer) section
+with the appropriate script from the [scripts](./scripts) directory.
+
+## Optional setup and UI tuning
+
+1.  Consider setting the background for the PAL Desktop,
+    which you can get
+    [here](https://prerequisites.pal.pivotal.io/prerequisites/prerequisites/linux-install/pal-desktop.png).
+
+1.  Consider pinning the applications to the task bar.
+    Unfortunately automating this in Windows 10
+    seems to require reimaging with WIM.
+    Or you may experiment with programmatic pinning in the start menu
+    with this unsupported
+    [tool](https://github.com/npocmaka/batch.scripts/blob/master/hybrids/jscript/pinnerJS.bat).
 
 ## Idiosynchrocies with Windows
 
