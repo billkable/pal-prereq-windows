@@ -45,7 +45,8 @@ specific or convenient for Windows users:
 To install and use the image,
 from the windows machine:
 
-1.  Download the `install-pal.ps1` script from this repository.
+1.  Download the [install script](./scripts/install-pal.ps1) script from
+    this repository.
 1.  Make sure your Windows machine has the policy to run scripts
     (see the comments at top of the install script).
 1.  Optionally tune the script if needed for a particular cohort.
