@@ -1,6 +1,6 @@
-# PAL Windows Setup
+# Windows Setup
 
-The scope of this project is to simplify the setup of PAL dependencies
+The scope of this project is to simplify the setup of EDU dependencies
 on Windows,
 similar to the PAL installation scripts for
 [MacOSX](https://prerequisites.pal.pivotal.io/prerequisites/prerequisites/macosx_install.sh)
@@ -15,38 +15,21 @@ installation experience similar to the Ubuntu and Mac equivalents.
 
 ## Installations
 
-The following are the set of dependencies required for the
-*Platform Acceleration Lab (PAL) for Java Developers* course:
+The PAL and Spring product courses have various dependencies that are
+not included with a base Windows installation.
 
-1. Git
-1. OpenJDK 11
-1. Gradle
-1. MySql
-1. CF CLI
-1. cURL
-1. Flyway
-1. Rabbitmq
-1. IntelliJ (Development IDE)
-1. Visual Studio Code (for basic text editing)
-1. Firefox
-1. Graphviz
-
-You can see the full list of PAL prerequisites
+As an example,
+you can see the full list of PAL prerequisites
 [here](https://prerequisites.pal.pivotal.io/prerequisites/prerequisites/index.html).
 
-The following are additional software components convenient for the
-specific or convenient for Windows users:
-
-1. Chocolatey package manager
-1. Postman - REST Client
-1. NTop - Enhanced console top command for Windows
+The Spring product courses have similar list of dependencies.
 
 ## Running the installer
 
-To install and use the image,
+To install and use the ,
 from the windows machine:
 
-1.  Download the [install script](./scripts/install_cnd.ps1) script from
+1.  Download the appropriate [install script](./scripts/install_cnd.ps1) script from
     this repository.
 1.  Make sure your Windows machine has the policy to run scripts
     (see the comments at top of the install script).
@@ -55,10 +38,6 @@ from the windows machine:
 1.  Close the Powershell window.
 1.  Use the image.
 
-## Spring Product Course installers
-
-Repeat steps in [Running the installer](#running-the-installer) section
-with the appropriate script from the [scripts](./scripts) directory.
 
 ## Optional setup and UI tuning
 
@@ -74,6 +53,42 @@ with the appropriate script from the [scripts](./scripts) directory.
     Or you may experiment with programmatic pinning in the start menu
     with this unsupported
     [tool](https://github.com/npocmaka/batch.scripts/blob/master/hybrids/jscript/pinnerJS.bat).
+
+## Building an Amazon Workspaces Bundle
+
+If you are running on Amazon Workspaces,
+it is a better option to build a custom bundle such that individual
+workspaces can be built in mass from a single template,
+rather than running a script on each baseline windows workspace.
+
+The following steps outline how to build a bundle:
+
+1.  Turn off IE enhanced security configuration
+    (from Server Manager)
+1.  Set firefox as default browser
+1.  Download the appropriate [install script](./scripts/install_cnd.ps1)
+    script from this repository.
+1.  Make sure your Windows machine has the policy to run scripts
+    (see the comments at top of the install script).
+1.  Run it from a Powershell terminal with Adminstrative access.
+1.  Close the Powershell window.
+1.  Apply the appropriate Desktop background via Local Policy Editor
+1.  Clean the browser history
+1.  Clean up the desktop
+1.  Reboot the template workspace
+1.  Create image
+1.  Create the bundle with the appropriate base bundle:
+    -   For PAL and Spring Cloud choose the Power Windows 2016 with:
+        - 4 vCPU
+        - 16 GB RAM
+        - 80GB root partition
+        - 50GB user partition
+    -   Core Spring or Spring Boot choose the Performance Windows 2016
+        with:
+            - 2 vCPU
+            - 8 GB RAM
+            - 80GB root partition
+            - 50GB user partition
 
 ## Idiosynchrocies with Windows
 
