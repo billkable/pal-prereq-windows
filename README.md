@@ -38,7 +38,6 @@ from the windows machine:
 1.  Close the Powershell window.
 1.  Use the image.
 
-
 ## Optional setup and UI tuning
 
 1.  Consider setting Firefox browser as the default.
@@ -63,20 +62,27 @@ rather than running a script on each baseline windows workspace.
 
 The following steps outline how to build a bundle:
 
+1.  Create a workspace with miniminal windows image
+    (Standard Windows 2016),
+    and `train_template` user.
+1.  Login to it.
 1.  Turn off IE enhanced security configuration
-    (from Server Manager)
-1.  Set firefox as default browser
+    (from Server Manager).
+1.  Set firefox as default browser.
 1.  Download the appropriate [install script](./scripts/install_cnd.ps1)
     script from this repository.
 1.  Make sure your Windows machine has the policy to run scripts
     (see the comments at top of the install script).
 1.  Run it from a Powershell terminal with Adminstrative access.
 1.  Close the Powershell window.
-1.  Apply the appropriate Desktop background via Local Policy Editor
-1.  Clean the browser history
-1.  Clean up the desktop
-1.  Reboot the template workspace
-1.  Create image
+1.  Download the
+    [desktop image](https://prerequisites.pal.pivotal.io/prerequisites/prerequisites/linux-install/pal-desktop.png)
+    and put it into the `C:\Windows\Pictures` directory.
+1.  [Apply the appropriate Desktop background via Local Policy Editor](https://www.tenforums.com/tutorials/91437-specify-default-desktop-background-windows-10-a.html#option1)
+1.  Clean the browser history.
+1.  Clean up the desktop.
+1.  Reboot the template workspace.
+1.  Create the image.
 1.  Create the bundle with the appropriate base bundle:
     -   For PAL and Spring Cloud choose the Power Windows 2016 with:
         - 4 vCPU
